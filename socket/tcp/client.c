@@ -33,7 +33,11 @@ int main(int argc, char *argv[]) {
     
     char buff[1024];
     memset(buff, '\0', sizeof(buff));
-    while(scanf("%1023s", buff) != EOF) {
+    // 一般情况下，使用 %s 的scanf()函数只会把一个单词而不是整个句子作为字符串读入!
+    // 所以， hello world会被分两次处理
+    // while(scanf("%1023s", buff) != EOF) {
+    // fgets()函数会把换行符也读入
+    while(fgets(buff, sizeof(buff), stdin) != NULL) {
         // write 
         printf("in buff: \"%s\"\n", buff);
         write(sockfd, buff, strlen(buff));
