@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         write(sockfd, buff, strlen(buff));
         memset(buff, '\0', sizeof(buff));
         // read
-        read(sockfd, buff, strlen(buff));
+        read(sockfd, buff, sizeof(buff));
         printf("return from server: \"%s\"\n", buff);
         memset(buff, '\0', sizeof(buff));
     }
